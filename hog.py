@@ -68,24 +68,19 @@ def take_turn(num_rolls, opponent_score, dice=six_sided):
     assert num_rolls <= 10, 'Cannot roll more than 10 dice.'
     assert opponent_score < 100, 'The game should be over.'
     # BEGIN PROBLEM 2
+    points = 0
     if num_rolls == 0:
         points = free_bacon(opponent_score)
         if is_prime(points):
             return next_prime(points)
         else:
             return points
+
     else:
         points = roll_dice(num_rolls, dice)
-        if points >= 25 - num_rolls:
-            points = 25 - num_rolls
-            return points
-        elif is_prime(points):
-            if next_prime(points) >= 25 - num_rolls:
-                return points
-            else:
-                return next_prime(points)
-        else:
-            return points
+        if is_prime(points):
+            points = next_prime(points)
+        return min(points, 25-num_rolls)
         
     # END PROBLEM 2
 
