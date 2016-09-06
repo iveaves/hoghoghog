@@ -252,3 +252,14 @@ def play(strategy0, strategy1, score0=0, score1=0, goal=GOAL_SCORE):
               score1 += 1
 
     return None
+    
+    def average_value(*args):
+        n = 0
+        total = 0
+        while n < num_samples:
+            n += 1
+            total += fn(*args)
+        return total / num_samples
+
+
+    return average_value
