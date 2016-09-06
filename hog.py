@@ -241,3 +241,14 @@ def play(strategy0, strategy1, score0=0, score1=0, goal=GOAL_SCORE):
 
     # END PROBLEM 5
     return score0, score1
+    
+    score0 = 0
+    score1 = 0
+    while score0 < goal and score1 < goal:
+        check_strategy_roll(score0, score1, strategy(score0, score1))
+        score0 += 1
+        if score0 == goal:
+              score0 = 0
+              score1 += 1
+
+    return None
